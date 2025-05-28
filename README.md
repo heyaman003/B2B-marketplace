@@ -44,6 +44,20 @@ npx prisma db push
 ```
 
 6. Seed the database with sample data:
+a. configure the mogodb for setting the replica as
+```
+replication:
+  replSetName: "rs0"
+storage:
+  dbPath: "../data/db"
+net:
+  bindIp: localhost
+  port: 27017 
+```
+```bash
+mongod --config mongod.conf 
+```
+b. now seed the dummy data set
 ```bash
 npx prisma db seed
 ```
