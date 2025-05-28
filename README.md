@@ -44,28 +44,36 @@ npx prisma db push
 ```
 
 6. Seed the database with sample data:
-a. configure the mogodb for setting the replica as
+configure the mogodb for setting the replica as
 
+6.1  make dir for the data 
 ```bash
 mkdir -p ../data/db
 chmod 755 ../data/db
 ```
+6.2 run the config file of mongodb 
 
 ```bash
 mongod --config mongod.conf 
 ```
- wait for few seconds, now go to terminal and open monosh and then initate is by just saying 
+6.3 wait for few seconds, 
+now go to terminal in and open monosh
 
+```bash
+mongosh
+```
+6.4 then initate is by just saying 
 ```bash
 rs.initate()
 ```
+
 you will see something like this 
 ```
 {info2:"some msg",
 ok:1
 }
 ```
-b. now seed the dummy data set
+6.5 now seed the dummy data set
 ```bash
 npx prisma db seed
 ```
