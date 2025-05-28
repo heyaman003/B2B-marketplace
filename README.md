@@ -76,14 +76,14 @@ src/
 ├── app/
 │   ├── api/
 │   │   └── search/
-│   │       └── route.ts    # Search API endpoint
+│   │       └── route.ts     Search API endpoint
 │   └── search/
-│       └── page.tsx        # Search page component
+│       └── page.tsx         Search page component
 ├── lib/
 │   ├── db/
-│   │   └── prisma.ts       # Database connection
-│   └── utils/              # Utility functions
-└── components/             # Reusable components
+│   │   └── prisma.ts        Database connection
+│   └── utils/               Utility functions
+└── components/              Reusable components
 ```
 
 ## API Endpoints
