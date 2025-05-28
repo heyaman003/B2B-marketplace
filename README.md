@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# B2B Marketplace Prototype
 
-## Getting Started
+A Next.js-based B2B marketplace prototype featuring dynamic category-specific attributes, search functionality, and faceted filtering.
 
-First, run the development server:
+## Features
 
+- Dynamic category-specific attributes
+- Full-text search with faceted filtering
+- Modern UI with Tailwind CSS
+- MongoDB database with Prisma ORM
+- Sample data seeder
+
+## Prerequisites
+
+- Node.js 18+ and npm
+- MongoDB (local or Atlas)
+
+## Setup
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd b2b-marketplace
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Create a `.env` file in the root directory with your MongoDB connection string:
+```
+DB_URL="mongodb://localhost:27017/b2b-marketplace"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Generate Prisma client:
+```bash
+npx prisma generate
+```
 
-## Learn More
+5. Run database migrations:
+```bash
+npx prisma db push
+```
 
-To learn more about Next.js, take a look at the following resources:
+6. Seed the database with sample data:
+```bash
+npx prisma db seed
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+7. Start the development server:
+```bash
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application will be available at `http://localhost:3000`.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+src/
+├── app/
+│   ├── api/
+│   │   └── search/
+│   │       └── route.ts    # Search API endpoint
+│   └── search/
+│       └── page.tsx        # Search page component
+├── lib/
+│   ├── db/
+│   │   └── prisma.ts       # Database connection
+│   └── utils/              # Utility functions
+└── components/             # Reusable components
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints
+
+### GET /api/search
+
+Search listings with filtering and faceting.
+
+Query Parameters:
+- `q` (string): Search query
+- `category` (string): Category slug
+- `filters` (JSON string): URL-encoded JSON object of attribute filters
+- `page` (number): Page number (default: 1)
+- `limit` (number): Results per page (default: 10)
+
+## Development
+
+- `npm run dev`: Start development server
+- `npm run build`: Build for production
+- `npm start`: Start production server
+- `npm run lint`: Run ESLint
+- `npm run type-check`: Run TypeScript type checking 
